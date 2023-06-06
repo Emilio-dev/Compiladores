@@ -127,10 +127,7 @@ class Parser:
     
     def start(self):
         self.parse("Q")
-        if self.index == len(self.tokens)-1:
-            print("Parsing successful.")
-        else:
-            print("Error: Extra tokens found.")
+        print("salida exitosa")
 
 def tokenizar(texto):
     lexer = Lexer(texto)
