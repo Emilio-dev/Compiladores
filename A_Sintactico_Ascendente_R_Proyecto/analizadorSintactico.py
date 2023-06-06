@@ -767,6 +767,9 @@ def read_file(filename):
             print("Error de sintaxis")
 
 parser = argparse.ArgumentParser()
-parser.add_argument('filename', type=str, help='The filename to read')
+parser.add_argument('filename', nargs='?', type=str, help='The filename to read')
 args = parser.parse_args()
-read_file(args.filename)
+if args.filename:
+    read_file(args.filename)
+else:
+    read_file("none")

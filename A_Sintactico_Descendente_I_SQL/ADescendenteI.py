@@ -4,6 +4,11 @@ class Token:
     def __init__(self, typ, val):
         self.type = typ
         self.value = val
+    def __str__(self):
+         return str(self.value)
+
+    def __repr__(self):
+        return str(self)
 
 class Lexer:
     def __init__(self, text):
@@ -144,7 +149,8 @@ def read_file(filename):
         try:
             while True:
                 text=input()
-                tokens=tokenizar(text)  
+                tokens=tokenizar(text) 
+                print(tokens) 
                 parser = Parser(tokens)
                 parser.start()
         except KeyboardInterrupt:
@@ -161,6 +167,9 @@ def read_file(filename):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('filename', type=str, help='The filename to read')
+parser.add_argument('filename', nargs='?', type=str, help='The filename to read')
 args = parser.parse_args()
-read_file(args.filename)
+if args.filename:
+    read_file(args.filename)
+else:
+    read_file("none")
